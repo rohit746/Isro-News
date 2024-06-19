@@ -1,0 +1,29 @@
+---
+import axios from "axios";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+const response = await axios.get(
+  "https://isro-news-api.rohit746.workers.dev/api/press-releases"
+);
+const pressRelease = response.data;
+---
+
+<Layout title="ISRO News">
+  <main class="p-8">
+    <h1 class="text-3xl font-bold mb-8">ISRO Press Releases</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        pressRelease.map(
+          (release: { title: string; date: string; link: string }) => (
+            <Card
+              title={release.title}
+              date={release.date}
+              link={release.link}
+            />
+          )
+        )
+      }
+    </div>
+  </main>
+</Layout>
