@@ -1,0 +1,26 @@
+---
+import { Card, CardContent } from './ui/card'
+
+interface Props {
+  title: string
+  date: string
+  link: string
+}
+
+const { title, date, link } = Astro.props
+---
+
+<Card>
+  <CardContent className="grid gap-2">
+    <h3 class="text-xl font-semibold">
+      {title}
+    </h3>
+    <p class="text-muted-foreground">
+      The Indian Space Research Organisation (ISRO) successfully launched the
+      PSLV-C54 rocket carrying the Earth Observation Satellite EOS-06 and eight
+      other co-passenger satellites from the Satish Dhawan Space Centre in
+      Sriharikota.
+    </p>
+    <p class="text-sm text-muted-foreground">{date}</p>
+  </CardContent>
+</Card>
